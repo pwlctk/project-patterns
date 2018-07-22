@@ -2,10 +2,10 @@ package pl.pwlctk.patterns.structural.adapter;
 
 import java.util.stream.Collectors;
 
-public class AlbumResource implements ResourceProduct {
+public class AlbumAdapter implements ResourceProduct {
     private final Album album;
 
-    public AlbumResource(Album album) {
+    public AlbumAdapter(Album album) {
         this.album = album;
     }
 

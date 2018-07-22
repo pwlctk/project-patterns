@@ -1,9 +1,9 @@
 package pl.pwlctk.patterns.structural.adapter;
 
-public class BookResource implements ResourceProduct {
+public class BookAdapter implements ResourceProduct {
     private final Book book;
 
-    public BookResource(Book book) {
+    public BookAdapter(Book book) {
         this.book = book;
     }
 

@@ -1,6 +1,6 @@
 # Learning Java
-## Project Patterns (samples and exercises)
-### Creational:
-#### Singleton(Eager, Lazy, LazyDoublecheck, Enum), Factory Method, Abstract Factory, Builder, Prototype
-### Structural:
-#### Adapter
+## Project patterns - samples
+### Creational patterns:
+#### Singleton(Eager, Lazy, LazyDoubleCheck, Enum), Factory Method, Abstract Factory, Builder, Prototype
+### Structural patterns:
+#### Adapter, Bridge, Decorator, Composite, Facade, Flyweight, Proxy
