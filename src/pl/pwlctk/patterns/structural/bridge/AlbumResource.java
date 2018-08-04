@@ -6,7 +6,7 @@ public class AlbumResource implements Resource {
     private String listOfSongs;
     private String publisher;
 
-    public AlbumResource(String title, String albumPicture, String listOfSongs, String publisher) {
+    AlbumResource(String title, String albumPicture, String listOfSongs, String publisher) {
         this.title = title;
         this.albumPicture = albumPicture;
         this.listOfSongs = listOfSongs;
