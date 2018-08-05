@@ -1,11 +1,35 @@
 package pl.pwlctk.tasks.zoo;
 
-public interface Animal {
+import java.time.LocalDateTime;
 
-    boolean isAlive(Animal animal);
+public abstract class Animal {
+    private LocalDateTime lastEatTime;
 
-    double weightning(Animal animal);
+    LocalDateTime getLastEatTime() {
+        return lastEatTime;
+    }
 
+    public Animal() throws IdontEatException {
+        this.lastEatTime = LocalDateTime.now();
+    }
 
+    boolean isAlive() {
+        LocalDateTime tenDaysBeforeNow = LocalDateTime.now().minusDays(10);
+        return getLastEatTime().isAfter(tenDaysBeforeNow);
+
+    }
+
+    void eat() {
+        this.lastEatTime = LocalDateTime.now();
+    }
+
+    void display(){
+        System.out.println("Gatunek zwierzęcia: " + getClass().getSimpleName());
+        System.out.println("Waga: " + getWeight());
+    }
+
+    abstract int getWeight();
+
+    abstract String getName();
 
 }
