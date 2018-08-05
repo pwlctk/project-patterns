@@ -9,7 +9,7 @@ public abstract class Animal {
         return lastEatTime;
     }
 
-    public Animal() throws IdontEatException {
+    public Animal(){
         this.lastEatTime = LocalDateTime.now();
     }
 

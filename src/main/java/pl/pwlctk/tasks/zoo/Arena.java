@@ -9,10 +9,15 @@ public class Arena {
 
     public void add(Bear bear) {
         bear.setArena(this);
-        bears.put(bear.getName(), bear);
+        bears.put(bear.getName().toLowerCase(), bear);
     }
 
     public void attack(Bear attacker, String deffenderName) {
-        attacker.attack(bears.get(deffenderName));
+        String deffender = deffenderName.toLowerCase();
+        if (bears.containsKey(deffender)) {
+            attacker.attack(bears.get(deffender));
+        } else {
+            System.out.println(attacker.getName() + " nie znalazł " + deffenderName + " na arenie");
+        }
     }
 }

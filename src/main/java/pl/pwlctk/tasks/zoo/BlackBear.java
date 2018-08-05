@@ -8,6 +8,7 @@ public class BlackBear extends Bear {
     BlackBear() {
         this.weight = 50;
         this.name = "Niedźwiedź Czarny";
+        this.life = 5;
         attackStrategy = new HurtAttack();
     }
 

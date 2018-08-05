@@ -8,6 +8,7 @@ public class TeddyBear extends Bear {
     TeddyBear() {
         this.name = "Pluszowy Miś";
         this.weight = 1;
+        this.life = 1;
         attackStrategy = new HugAttack();
     }
 

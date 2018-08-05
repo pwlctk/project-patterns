@@ -5,9 +5,11 @@ public class BrownBear extends Bear {
     private int weight;
     private String name;
 
+
     BrownBear() {
         this.weight = 100;
         this.name = "Niedźwiedź Brunatny";
+        this.life = 10;
         attackStrategy = new HurtAttack();
     }
 

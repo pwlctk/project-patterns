@@ -15,8 +15,9 @@ public class MainZoo {
         arena.add(blackBear);
         arena.add(teddyBear);
 
-        polarBear.attack("Niedźwiedź Brunatny");
+        polarBear.attack("Niedźwiedź BrUnatny");
         blackBear.attack("Niedźwiedź Polarny");
         teddyBear.attack("Niedźwiedź Czarny");
+        brownBear.attack("Czarny Ninja");
     }
 }

@@ -5,10 +5,10 @@ public class PolarBear extends Bear {
     private int weight;
     private String name;
 
-
     PolarBear() {
         this.weight = 200;
         this.name = "Niedźwiedź Polarny";
+        this.life = 20;
         attackStrategy = new KillAttack();
     }
 
