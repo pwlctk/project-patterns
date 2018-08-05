@@ -1,6 +1,6 @@
 package pl.pwlctk.tasks.zoo;
 
-public class BrownBear extends DangerousBear {
+public class BrownBear extends Bear {
     private AttackStrategy attackStrategy;
     private int weight;
     private String name;
@@ -27,6 +27,6 @@ public class BrownBear extends DangerousBear {
 
     @Override
     public void attack(Animal animal) {
-        attackStrategy.attack(this, animal);
+        System.out.println(attackStrategy.attack(this, animal));
     }
 }

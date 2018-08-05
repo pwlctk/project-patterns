@@ -5,14 +5,14 @@ import java.util.Map;
 
 public class Arena {
 
-    private Map<String, DangerousBear> bears = new HashMap<>();
+    private Map<String, Bear> bears = new HashMap<>();
 
-    public void add(DangerousBear bear) {
+    public void add(Bear bear) {
         bear.setArena(this);
         bears.put(bear.getName(), bear);
     }
 
-    public void attack(DangerousBear attacker, String deffenderName) {
+    public void attack(Bear attacker, String deffenderName) {
         attacker.attack(bears.get(deffenderName));
     }
 }

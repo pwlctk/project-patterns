@@ -1,9 +1,10 @@
 package pl.pwlctk.tasks.zoo;
 
-public class PolarBear extends DangerousBear {
+public class PolarBear extends Bear {
     private AttackStrategy attackStrategy;
     private int weight;
     private String name;
+
 
     PolarBear() {
         this.weight = 200;
@@ -27,9 +28,6 @@ public class PolarBear extends DangerousBear {
 
     @Override
     public void attack(Animal animal) {
-        {
-            attackStrategy.attack(this, animal);
-        }
+        System.out.println(attackStrategy.attack(this, animal));
     }
-
 }

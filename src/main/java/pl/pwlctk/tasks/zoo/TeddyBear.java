@@ -1,12 +1,14 @@
 package pl.pwlctk.tasks.zoo;
 
-public class TeddyBear extends Animal {
+public class TeddyBear extends Bear {
+    private AttackStrategy attackStrategy;
     private String name;
     private int weight;
 
     TeddyBear() {
         this.name = "Pluszowy Miś";
         this.weight = 1;
+        attackStrategy = new HugAttack();
     }
 
     public int getWeight() {
@@ -31,5 +33,10 @@ public class TeddyBear extends Animal {
     @Override
     void eat() {
         throw new IdontEatException();
+    }
+
+    @Override
+    public void attack(Animal animal) {
+        System.out.println(attackStrategy.attack(this, animal));
     }
 }

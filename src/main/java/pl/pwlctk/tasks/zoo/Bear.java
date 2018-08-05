@@ -1,6 +1,6 @@
 package pl.pwlctk.tasks.zoo;
 
-abstract class DangerousBear extends Animal implements Attackable {
+abstract class Bear extends Animal implements Attackable {
     private Arena arena;
 
     void setArena(Arena arena) {
