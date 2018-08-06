@@ -7,6 +7,10 @@ public class MainApplication {
         InstructionLoader instructionLoader = new InstructionLoader("(\\d+)\\s+([A-Z]+)\\s+(.*)");
         List<Instruction> instructions = instructionLoader.loadInstructionsFromDisk();
 
+        System.out.println("Lista wszystkich instrukcji:");
         System.out.println(instructions);
+
+        //Ewaluator instrukcji PRINT, metoda statyczna, bo chyba tak jest wygodniej
+        Print.printer(instructions.get(1));
     }
 }

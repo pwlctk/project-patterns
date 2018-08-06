@@ -11,6 +11,14 @@ public class Instruction {
         this.instructionArguments = instructionArguments;
     }
 
+    String getInstructionName() {
+        return instructionName;
+    }
+
+    String getInstructionArguments() {
+        return instructionArguments;
+    }
+
     @Override
     public String toString() {
         return "Instruction{" +
