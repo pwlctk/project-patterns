@@ -11,6 +11,18 @@ public class Instruction {
         this.instructionArguments = instructionArguments;
     }
 
+    public long getLineNumber() {
+        return lineNumber;
+    }
+
+    String getInstructionName() {
+        return instructionName;
+    }
+
+    String getInstructionArguments() {
+        return instructionArguments;
+    }
+
     @Override
     public String toString() {
         return "Instruction{" +

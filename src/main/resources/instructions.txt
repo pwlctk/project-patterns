@@ -1,2 +1,4 @@
 12 PRINT Hello World
 13 PRINT Co ja robie tu, co ja tutaj robie?
+14 GET Wielki zły NULL!
+15 PRINT Java jest super tylko szkoda, że tak mało umiem :(
