@@ -8,18 +8,22 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class InstructionLoader {
-    private List<String> instructions;
+    private List<Instruction> instructions;
+    private Parser parser;
 
-    List<String> loadInstructionsFromDisk(){
-            try {
-                String path = "src/main/resources/instructions.txt";
-                Stream<String> stream = Files.lines(Paths.get(path));
-                instructions = stream.collect(Collectors.toList());
-                stream.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return instructions;
+    InstructionLoader(String pattern) {
+        this.parser = new Parser(pattern);
     }
 
+    List<Instruction> loadInstructionsFromDisk() {
+        try {
+            String path = "src/main/resources/instructions.txt";
+            Stream<String> stream = Files.lines(Paths.get(path));
+            instructions = stream.map(instr -> parser.parse(instr)).collect(Collectors.toList());
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return instructions;
+    }
 }

@@ -1,25 +1,12 @@
 package pl.pwlctk.tasks.program;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainApplication {
     public static void main(String[] args) {
-        Parser parser = new Parser();
-        InstructionLoader instructionLoader = new InstructionLoader();
-
-        List<String> fullInstructions = instructionLoader.loadInstructionsFromDisk();
-
-        System.out.println(fullInstructions);
-
-        List<Instruction> instructions = new ArrayList<>();
-        for (String fullInstruction : fullInstructions) {
-            instructions.add(parser.parse(fullInstruction));
-        }
+        InstructionLoader instructionLoader = new InstructionLoader("(\\d+)\\s+([A-Z]+)\\s+(.*)");
+        List<Instruction> instructions = instructionLoader.loadInstructionsFromDisk();
 
         System.out.println(instructions);
     }
-
-
-
 }

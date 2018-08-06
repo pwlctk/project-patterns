@@ -1,7 +1,6 @@
 package pl.pwlctk.tasks.program;
 
 public class Instruction {
-
     private long lineNumber;
     private String instructionName;
     private String instructionArguments;
@@ -12,24 +11,12 @@ public class Instruction {
         this.instructionArguments = instructionArguments;
     }
 
-    public long getLineNumber() {
-        return lineNumber;
-    }
-
-    public String getInstructionName() {
-        return instructionName;
-    }
-
-    public String getInstructionArguments() {
-        return instructionArguments;
-    }
-
     @Override
     public String toString() {
         return "Instruction{" +
-                "lineNumber=" + lineNumber +
-                ", instructionName='" + instructionName + '\'' +
-                ", instructionArguments='" + instructionArguments + '\'' +
-                '}' + "\n";
+                "line: " + lineNumber +
+                ", name: '" + instructionName + '\'' +
+                ", arguments: '" + instructionArguments + '\'' +
+                '}';
     }
 }
