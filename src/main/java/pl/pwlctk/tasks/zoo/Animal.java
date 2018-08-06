@@ -33,7 +33,7 @@ public abstract class Animal {
     }
 
     void injuries(int damage) {
-            life -= damage;
+        life -= damage;
     }
 
     int getLife() {
@@ -43,7 +43,6 @@ public abstract class Animal {
     abstract int getWeight();
 
     abstract String getName();
-
 
 
 }
