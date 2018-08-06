@@ -9,7 +9,7 @@ public class PolarBear extends Bear {
         this.weight = 200;
         this.name = "Niedźwiedź Polarny";
         this.life = 20;
-        attackStrategy = new KillAttack();
+        attackStrategy = new StrongAttack();
     }
 
     public int getWeight() {

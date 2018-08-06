@@ -12,12 +12,17 @@ public class Arena {
         bears.put(bear.getName().toLowerCase(), bear);
     }
 
-    public void attack(Bear attacker, String deffenderName) {
-        String deffender = deffenderName.toLowerCase();
-        if (bears.containsKey(deffender)) {
-            attacker.attack(bears.get(deffender));
+    public void attack(Bear attacker, String defenderName) {
+        String defender = defenderName.toLowerCase();
+        if (bears.containsKey(defender)) {
+
+            attacker.attack(bears.get(defender));
         } else {
-            System.out.println(attacker.getName() + " nie znalazł " + deffenderName + " na arenie");
+            System.out.println(attacker.getName() + " nie znalazł " + defenderName + " na arenie");
         }
+    }
+
+    void clear() {
+        bears.entrySet().removeIf(entry -> entry.getValue().getLife() <= 0);
     }
 }

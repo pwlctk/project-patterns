@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ProgramCompilerApplication {
-    private String address;
+    private long lineNumber;
     private String orderName;
     private String orderArguments;
 
