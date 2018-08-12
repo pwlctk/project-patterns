@@ -28,6 +28,7 @@ public class CounterService {
 
         System.out.println(a == b); //true bo java tworzy sobie tablice i traktuje to jako typ prosty tablica do 127 tylko
         System.out.println(c == d); // false
+
     }
 
 }

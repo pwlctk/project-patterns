@@ -1,4 +1,7 @@
 12 PRINT Hello World
-13 PRINT Co ja robie tu, co ja tutaj robie?
-14 GET Wielki zły NULL!
-15 PRINT Java jest super tylko szkoda, że tak mało umiem :(
+13 PRINT K-Pax to dobry film!
+16 GET value3 name
+17 SET name2 Rałał
+18 GET name Janusz
+19 CAL 5-3
+22 PRINT $name dobrze zna $name2

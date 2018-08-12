@@ -1,30 +1,11 @@
 package pl.pwlctk.tasks.program;
 
-public class Instruction {
-    private long lineNumber;
-    private String instructionName;
-    private String instructionArguments;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-    Instruction(long lineNumber, String instructionName, String instructionArguments) {
-        this.lineNumber = lineNumber;
-        this.instructionName = instructionName;
-        this.instructionArguments = instructionArguments;
-    }
-
-    String getInstructionName() {
-        return instructionName;
-    }
-
-    String getInstructionArguments() {
-        return instructionArguments;
-    }
-
-    @Override
-    public String toString() {
-        return "Instruction{" +
-                "line: " + lineNumber +
-                ", name: '" + instructionName + '\'' +
-                ", arguments: '" + instructionArguments + '\'' +
-                '}';
-    }
+@Data
+@RequiredArgsConstructor
+class Instruction {
+    private Long address;
+    private String type, arguments;
 }

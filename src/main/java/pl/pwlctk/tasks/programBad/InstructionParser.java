@@ -1,17 +1,17 @@
-package pl.pwlctk.tasks.program;
+package pl.pwlctk.tasks.programBad;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Parser {
+class InstructionParser {
     private Pattern compile;
 
-    Parser(String pattern) {
+    InstructionParser(String pattern) {
         this.compile = Pattern.compile(pattern);
     }
-
-    Instruction parse(String fullInstruction) {
-        Matcher matcher = compile.matcher(fullInstruction);
+//Trzeba uzyc Optional
+    Instruction parse(String line) {
+        Matcher matcher = compile.matcher(line);
         Instruction instruction;
         if (matcher.find()) {
             String group1 = matcher.group(1);

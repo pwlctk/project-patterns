@@ -1,4 +1,4 @@
-package pl.pwlctk.tasks.program;
+package pl.pwlctk.tasks.programBad;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ public class MainApplication {
         System.out.println(instructions);
 
         //Ewaluator instrukcji PRINT, metoda statyczna, bo chyba tak jest wygodniej
-        Print.printer(instructions.get(1));
+        Print print = new Print();
+        print.printer(instructions.get(1));
+
     }
 }
