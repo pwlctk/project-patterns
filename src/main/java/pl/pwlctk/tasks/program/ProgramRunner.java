@@ -1,8 +1,8 @@
 package pl.pwlctk.tasks.program;
 
 class ProgramRunner {
-    ProgramMemory programMemory;
-    EvaluatorFactory evaluatorFactory;
+    private final ProgramMemory programMemory;
+    private final EvaluatorFactory evaluatorFactory;
 
     ProgramRunner(ProgramMemory programMemory, EvaluatorFactory evaluatorFactory) {
         this.programMemory = programMemory;
@@ -10,9 +10,10 @@ class ProgramRunner {
     }
 
     void run() {
+        while (programMemory.hasNextInstruction()) {
+            Instruction instruction = programMemory.getNextInstruction();
+            evaluatorFactory.createEvaluator(instruction).evaluate();
 
-        for (Instruction instruction : programMemory.getInstructions()) {
-            evaluatorFactory.createEvaluator(instruction, programMemory).evaluate();
         }
     }
 }

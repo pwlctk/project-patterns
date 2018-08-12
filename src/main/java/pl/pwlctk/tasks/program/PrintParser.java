@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 class PrintParser {
     private String regex;
     private String parseArguments;
-    private ProgramMemory programMemory;
+    private final ProgramMemory programMemory;
     private String lineToPrint;
 
     PrintParser(String regex, String parseArguments, ProgramMemory programMemory) {
@@ -19,8 +19,8 @@ class PrintParser {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(parseArguments);
         while (matcher.find()) {
-            String match = matcher.group(0).substring(1);
-            parseArguments = parseArguments.replaceFirst("\\$" + match, programMemory.getValue(match));
+            String variableName = matcher.group(0).substring(1);
+            parseArguments = parseArguments.replaceFirst("\\$" + variableName, programMemory.getValue(variableName));
         }
         lineToPrint = parseArguments;
     }

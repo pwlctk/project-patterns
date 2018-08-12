@@ -7,8 +7,8 @@ class CalParser {
     private String regex;
     private String parseArguments;
 
-    private String number1;
-    private String number2;
+    private int number1;
+    private int number2;
     private String operator;
 
     CalParser(String parseArguments, String regex) {
@@ -20,18 +20,18 @@ class CalParser {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(parseArguments);
         if (matcher.find()) {
-            number1 = matcher.group(1);
+            number1 = Integer.parseInt(matcher.group(1));
             operator = matcher.group(2);
-            number2 = matcher.group(3);
+            number2 = Integer.parseInt(matcher.group(3));
         }
     }
 
     int getNumber1() {
-        return Integer.parseInt(number1);
+        return number1;
     }
 
     int getNumber2() {
-        return Integer.parseInt(number2);
+        return number2;
     }
 
     String getOperator() {

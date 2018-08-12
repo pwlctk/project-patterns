@@ -1,7 +1,7 @@
 package pl.pwlctk.tasks.program;
 
 public class UnknownEvaluator implements Evaluator {
-    private Instruction instruction;
+    private final Instruction instruction;
 
     UnknownEvaluator(Instruction instruction) {
         this.instruction = instruction;

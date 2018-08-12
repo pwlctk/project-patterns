@@ -6,10 +6,11 @@ class ProgramComilerApplication {
     public static void main(String[] args) throws IOException {
         InstructionParser parser = new InstructionParser();
         ProgramMemory programMemory = new ProgramMemory();
+        EvaluatorFactory evaluatorFactory = new EvaluatorNameFactory(programMemory);
         ProgramLoader loader = new ProgramLoader(programMemory, parser);
-        EvaluatorFactory evaluatorFactory = new EvaluatorNameFactory();
 
         loader.load();
+
         ProgramRunner starter = new ProgramRunner(programMemory, evaluatorFactory);
         starter.run();
     }

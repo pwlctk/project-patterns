@@ -1,9 +1,9 @@
 package pl.pwlctk.tasks.program;
 
 public class SetEvaluator implements Evaluator {
-    private static final String REGEX = "(\\S+)\\s+(.*)";
-    private ProgramMemory programMemory;
-    private GetSetParser getSetParser;
+    private final String REGEX = "(\\S+)\\s+(.*)";
+    private final ProgramMemory programMemory;
+    private final GetSetParser getSetParser;
 
     SetEvaluator(Instruction instruction, ProgramMemory programMemory) {
         this.programMemory = programMemory;
