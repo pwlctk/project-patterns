@@ -46,7 +46,7 @@ public class TextRepository implements EventRepository {
         LocalDateTime closedTimeFromNow = LocalDateTime.MAX;
         Event closest = null;
         for (Event event : all) {
-            String date = event.getDateTime();
+            String date = event.getDate();
             LocalDateTime localDateTime = dateParser.toLocalDateTime(date);
 
             if (localDateTime.isAfter(now) && localDateTime.isBefore(closedTimeFromNow)) {
@@ -58,7 +58,7 @@ public class TextRepository implements EventRepository {
     }
 
     @Override
-    public void addEvent(Event event) {
+    public void save(Event event) {
         String path = loader.getPathEvent();
         String content = "\n" + parser.parseToLine(event);
         try {

@@ -8,7 +8,7 @@ class EventParser {
     private final Pattern PATTERN = Pattern.compile("(.*) - (.*)");
 
     String parseToLine(Event event) {
-        return event.getDateTime() + " - " + event.getName();
+        return event.getDate() + " - " + event.getName();
     }
 
     Optional<Event> parseToEvent(String line) {

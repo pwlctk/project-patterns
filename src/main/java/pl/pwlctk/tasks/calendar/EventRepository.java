@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface EventRepository {
     List<Event> getAllEvents();
     Optional<Event> getNextEvent();
-    void addEvent(Event event);
+    void save(Event event);
     void saveAllEventsToDisk();
 }

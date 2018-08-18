@@ -13,7 +13,7 @@ class EventService {
 
     private String getDisplayEvent(Event event) {
 
-        return event.getName() + ": " + dateParser.toDisplayString(event.getDateTime());
+        return event.getName() + ": " + dateParser.toDisplayString(event.getDate());
     }
 
     void showAllEvents() {
@@ -30,7 +30,7 @@ class EventService {
     void addEvent() {
         String newEventDate = "12122012 12:12";
         String newEventName = "Nowe wydarzenie";
-        repository.addEvent(new Event(newEventName, newEventDate));
+        repository.save(new Event(newEventName, newEventDate));
     }
 
 

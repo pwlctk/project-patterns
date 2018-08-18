@@ -1,19 +1,30 @@
 package pl.pwlctk.tasks.calendar;
 
-class Event {
-    private String name;
-    private String dateTime;
+import javax.xml.bind.annotation.*;
 
-    Event(String name, String dateTime) {
+@XmlType(name = "event")
+@XmlAccessorType(XmlAccessType.FIELD)
+
+public class Event {
+    @XmlAttribute(name = "date")
+    private String date;
+
+    @XmlValue
+    private String name;
+
+    public Event() {
+    }
+
+    public Event(String name, String date) {
         this.name = name;
-        this.dateTime = dateTime;
+        this.date = date;
     }
 
     public String getName() {
         return name;
     }
 
-    String getDateTime() {
-        return dateTime;
+    String getDate() {
+        return date;
     }
 }
