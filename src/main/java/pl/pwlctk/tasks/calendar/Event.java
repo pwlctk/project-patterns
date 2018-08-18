@@ -1,12 +1,10 @@
 package pl.pwlctk.tasks.calendar;
 
-import java.time.LocalDateTime;
-
 class Event {
     private String name;
-    private LocalDateTime dateTime;
+    private String dateTime;
 
-    Event(String name, LocalDateTime dateTime) {
+    Event(String name, String dateTime) {
         this.name = name;
         this.dateTime = dateTime;
     }
@@ -15,7 +13,7 @@ class Event {
         return name;
     }
 
-    public LocalDateTime getDateTime() {
+    String getDateTime() {
         return dateTime;
     }
 }

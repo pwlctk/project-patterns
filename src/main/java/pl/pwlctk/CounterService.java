@@ -4,7 +4,7 @@ public class CounterService {
     private int counter;
     private String name;
 
-    public String registerVisit(String visitorName) {
+    private String registerVisit(String visitorName) {
         counter++;
         name = visitorName;
 
@@ -30,5 +30,7 @@ public class CounterService {
         System.out.println(c == d); // false
 
     }
+
+
 
 }

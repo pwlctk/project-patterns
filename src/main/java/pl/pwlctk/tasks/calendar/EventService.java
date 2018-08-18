@@ -1,23 +1,36 @@
 package pl.pwlctk.tasks.calendar;
 
-import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 class EventService {
     private EventRepository repository;
+    private LocalDateParser dateParser;
 
-    EventService(EventRepository repository) {
+    EventService(EventRepository repository, LocalDateParser dateParser) {
         this.repository = repository;
+        this.dateParser = dateParser;
     }
 
-    private void displayEvent(Event event) {
-        String outputFormat = repository.getLoader().getDateTimeOutputFormatter();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(outputFormat);
+    private String getDisplayEvent(Event event) {
 
-        System.out.println(event.getName() + ": " + event.getDateTime().format(formatter));
+        return event.getName() + ": " + dateParser.toDisplayString(event.getDateTime());
     }
 
     void showAllEvents() {
-        repository.getAllEvents().forEach(this::displayEvent);
+        repository.getAllEvents().stream().map(this::getDisplayEvent).forEach(System.out::println);
+    }
+
+    void showNextEvent() {
+        Optional<Event> event = repository.getNextEvent();
+        String display = event.map(this::getDisplayEvent).orElse("Nie ma najbliższego wydarzenia");
+        System.out.println(display);
+
+    }
+
+    void addEvent() {
+        String newEventDate = "12122012 12:12";
+        String newEventName = "Nowe wydarzenie";
+        repository.addEvent(new Event(newEventName, newEventDate));
     }
 
 

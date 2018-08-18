@@ -27,15 +27,15 @@ class PropertiesLoader {
         }
     }
 
-    public String getDateTimeInputFormatter() {
+    String getDateTimeInputFormatter() {
         return dateTimeInputFormatter;
     }
 
-    public String getDateTimeOutputFormatter() {
+    String getDateTimeOutputFormatter() {
         return dateTimeOutputFormatter;
     }
 
-    public String getPathEvent() {
+    String getPathEvent() {
         return pathEvent;
     }
 
