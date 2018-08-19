@@ -6,7 +6,7 @@ public class HelpCommand implements Command {
     private Map<String, Command> commands;
 
 
-    public HelpCommand(Map<String, Command> commands) {
+    HelpCommand(Map<String, Command> commands) {
         this.commands = commands;
     }
 
@@ -15,7 +15,6 @@ public class HelpCommand implements Command {
         for (Map.Entry<String, Command> entry : commands.entrySet()) {
             String commandName = commands.get(entry.getKey()).getCommandName();
             String helpMessage = commands.get(entry.getKey()).getHelpMessage();
-
             System.out.println(commandName + " - " + helpMessage);
         }
     }

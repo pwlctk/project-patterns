@@ -2,22 +2,16 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
-import pl.pwlctk.tasks.calendar.PropertiesLoader;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class AddEventCommand implements Command {
     private EventService service;
     private LocalDateParser parser;
-    private PropertiesLoader loader;
 
-    public AddEventCommand(EventService service, LocalDateParser parser, PropertiesLoader loader) {
+    AddEventCommand(EventService service, LocalDateParser parser) {
         this.service = service;
         this.parser = parser;
-        this.loader = loader;
     }
 
     @Override
