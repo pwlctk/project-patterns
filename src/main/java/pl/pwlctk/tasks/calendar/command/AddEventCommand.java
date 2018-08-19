@@ -17,10 +17,19 @@ public class AddEventCommand implements Command {
     @Override
     public void run() {
         Scanner scanner = new Scanner(System.in);
+        String date = getProperDate(scanner);
+        System.out.println("Podaj nazwę wydarzenia:");
+        String name = scanner.nextLine();
+
+        service.addEvent(date, name);
+        System.out.println("Wydarzenie dodano pomyślnie!");
+    }
+
+    private String getProperDate(Scanner scanner) {
         String date = "";
         boolean loop = true;
         while (loop) {
-            System.out.println("Podaj datę i godzinę (DDMMRRRR GG:MM): ");
+            System.out.println("Podaj datę i godzinę (format: " + parser.getInputDateTimeRegex() + "):");
             String text = scanner.nextLine();
             loop = false;
             try {
@@ -30,10 +39,7 @@ public class AddEventCommand implements Command {
                 loop = true;
             }
         }
-        System.out.println("Podaj nazwę wydarzenia:");
-        String name = scanner.nextLine();
-        service.addEvent(date, name);
-        System.out.println("Wydarzenie dodano pomyślnie!");
+        return date;
     }
 
     @Override

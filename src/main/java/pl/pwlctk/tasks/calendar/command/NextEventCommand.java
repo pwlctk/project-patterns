@@ -5,7 +5,7 @@ import pl.pwlctk.tasks.calendar.EventService;
 public class NextEventCommand implements Command {
     private EventService service;
 
-    public NextEventCommand(EventService service) {
+    NextEventCommand(EventService service) {
         this.service = service;
     }
 

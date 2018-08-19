@@ -16,11 +16,12 @@ public class CommandRunner {
         addCommand(new ShowAllEventsCommand(service));
         addCommand(new NextEventCommand(service));
         addCommand(new AddEventCommand(service, parser));
+        addCommand(new AddRandomEventCommand(service, parser));
     }
 
     private void addCommand(Command command) {
-        map.put(command.getCommandName().trim().toUpperCase(),
-                command);
+        String key = command.getCommandName().trim().toUpperCase();
+        map.put(key, command);
     }
 
     public void removeCommand(Command command) {

@@ -5,6 +5,10 @@ import pl.pwlctk.tasks.calendar.EventService;
 public class ShowAllEventsCommand implements Command {
     private EventService service;
 
+    ShowAllEventsCommand(EventService service) {
+        this.service = service;
+    }
+
     @Override
     public void run() {
         System.out.println("Wszystkie wydarzenia:");
@@ -19,9 +23,5 @@ public class ShowAllEventsCommand implements Command {
     @Override
     public String getCommandName() {
         return "all";
-    }
-
-    public ShowAllEventsCommand(EventService service) {
-        this.service = service;
     }
 }
