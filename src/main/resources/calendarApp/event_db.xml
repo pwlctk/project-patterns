@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <calendar>
-    <event date="16062018 13:49">Nazwa wydarzenia A</event>
-    <event date="23112017 12:21">Nazwa wydarzenia B</event>
-    <event date="12122012 12:12">Nowe wydarzenie</event>
-    <event date="20102020 20:10">Koniec świata</event>
-    <event date="20102019 20:10">Dentysta</event>
-    <event date="20102019 20:10">Dentysta</event>
-    <event date="20122018 14:30">Jakiś super ewent</event>
-    <event date="19062020 13:23">Ważny event</event>
-    <event date="10102100 15:44">Buuu</event>
-    <event date="10122012 20:10">Wydarzenie nowe 2</event>
-    <event date="10122017 15:50">Bubuu</event>
-    <event date="04032018 09:10">Losowe wydarzenie</event>
-    <event date="10122020 11:20">Helloł</event>
-    <event date="10122000 20:20">fsdfsdfsd</event>
+    <event date="03032017 23:13" name="Losowe wydarzenie">
+        <member name="Paweł" email="pwlctk@gmail.com"/>
+        <member name="Piotr" email="piotr@gmail.com"/>
+    </event>
+    <event date="08072017 02:45" name="Losowe wydarzenie"/>
+    <event date="11012018 16:29" name="Losowe wydarzenie"/>
 </calendar>

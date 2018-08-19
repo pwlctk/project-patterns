@@ -17,6 +17,7 @@ public class CommandRunner {
         addCommand(new NextEventCommand(service));
         addCommand(new AddEventCommand(service, parser));
         addCommand(new AddRandomEventCommand(service, parser));
+        addCommand(new searchByEmailCommand(service));
     }
 
     private void addCommand(Command command) {

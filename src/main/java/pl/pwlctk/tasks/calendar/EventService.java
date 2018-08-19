@@ -27,7 +27,30 @@ public class EventService {
         repository.save(new Event(name, date));
     }
 
+    private String getMembersList(Event event) {
+        if (event.getMemberList().isEmpty()) {
+            return "";
+        } else {
+            StringBuilder members = new StringBuilder();
+            members.append("\nGoście: ");
+            event.getMemberList().forEach(m ->members.append(m.getName()).append(": ").append(m.getEmail()).append(", "));
+
+            members.deleteCharAt(members.length()-1);
+            members.deleteCharAt(members.length()-1);
+
+            return members.toString();
+        }
+    }
+
     private String getDisplayEvent(Event event) {
-        return event.getName() + ": " + dateParser.toDisplayString(event.getDate());
+        return event.getName() + ": " + dateParser.toDisplayString(event.getDate()) + getMembersList(event);
+    }
+
+    public EventRepository getRepository() {
+        return repository;
+    }
+
+    public void showEvent(Event event) {
+        System.out.println(getDisplayEvent(event));
     }
 }
