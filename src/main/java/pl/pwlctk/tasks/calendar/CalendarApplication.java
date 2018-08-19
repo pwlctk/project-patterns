@@ -1,5 +1,7 @@
 package pl.pwlctk.tasks.calendar;
 
+import java.time.LocalDateTime;
+
 public class CalendarApplication {
     public static void main(String[] args) {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
@@ -14,7 +16,11 @@ public class CalendarApplication {
         System.out.println();
         System.out.println("Najbliższe wydarzenie:");
         service.showNextEvent();
-        service.addEvent();
+
+        LocalDateTime randomDate = RandomDateTime.createRandomDate(2017, 2020);
+        String date = localDateParser.toInputString(randomDate);
+
+        service.addEvent(date, "Ważny event");
 
     }
 }

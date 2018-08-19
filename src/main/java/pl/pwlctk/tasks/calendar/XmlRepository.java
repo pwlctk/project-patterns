@@ -44,7 +44,13 @@ public class XmlRepository implements EventRepository {
 
     @Override
     public void save(Event event) {
+        File xmlFile = new File(loader.getPathEvent());
+        Calendar calendar = JAXB.unmarshal(xmlFile, Calendar.class);
 
+        List<Event> allEvents = calendar.getEventList();
+        allEvents.add(event);
+
+        JAXB.marshal(calendar, xmlFile);
     }
 
     @Override

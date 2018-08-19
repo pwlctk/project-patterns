@@ -14,7 +14,7 @@ public class Calendar {
     @XmlElement(name = "event")
     private List<Event> eventList = new ArrayList<>();
 
-    public List<Event> getEventList() {
+    List<Event> getEventList() {
         return eventList;
     }
 

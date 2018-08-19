@@ -15,10 +15,17 @@ class LocalDateParser {
         return toDisplayString(localDateTime);
     }
 
-    private String toDisplayString(LocalDateTime localDateTime) {
+    String toDisplayString(LocalDateTime localDateTime) {
         String outputDateFormat = propertiesLoader.getDateTimeOutputFormatter();
         DateTimeFormatter formatter = DateTimeFormatter.
                 ofPattern(outputDateFormat);
+        return localDateTime.format(formatter);
+    }
+
+    String toInputString(LocalDateTime localDateTime){
+        String inputDateFormat = propertiesLoader.getDateTimeInputFormatter();
+        DateTimeFormatter formatter = DateTimeFormatter.
+                ofPattern(inputDateFormat);
         return localDateTime.format(formatter);
     }
 

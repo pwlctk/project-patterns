@@ -13,10 +13,11 @@ class RepositoryFactory {
     }
 
     EventRepository createRepository() {
-        if (propertiesLoader.getPathEvent().contains(".xml")) {
+        boolean isXml = propertiesLoader.getPathEvent().contains(".xml");
+        if (isXml) {
             return new XmlRepository(propertiesLoader, localDateParser);
         } else {
-            return new TextRepository(propertiesLoader, eventParser, localDateParser);
+            return new TxtRepository(propertiesLoader, eventParser, localDateParser);
         }
     }
 }

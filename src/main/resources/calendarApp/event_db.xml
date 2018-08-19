@@ -1,6 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <calendar>
-    <!--to są elementy, które mogą mieć atrybuty, np.: date i wartości, np.: Nazwa wydarzenia A-->
     <event date="16062018 13:49">Nazwa wydarzenia A</event>
     <event date="23112017 12:21">Nazwa wydarzenia B</event>
-    <event date="23112018 12:21">Nazwa wydarzenia B</event>
+    <event date="12122012 12:12">Nowe wydarzenie</event>
+    <event date="20102020 20:10">Koniec świata</event>
+    <event date="20102019 20:10">Dentysta</event>
+    <event date="20102019 20:10">Dentysta</event>
+    <event date="20122018 14:30">Jakiś super ewent</event>
+    <event date="18072020 03:47">Jakiś super ewent</event>
+    <event date="24072020 09:45">Jakiś super ewent</event>
+    <event date="19062020 13:23">Ważny event</event>
+    <event date="24022019 13:45">Ważny event</event>
+    <event date="23042019 07:20">Ważny event</event>
+    <event date="22032020 12:58">Ważny event</event>
+    <event date="02112019 14:02">Ważny event</event>
+    <event date="17022017 14:18">Ważny event</event>
+    <event date="15012019 22:41">Ważny event</event>
 </calendar>

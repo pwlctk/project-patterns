@@ -39,7 +39,7 @@ class PropertiesLoader {
         return pathEvent;
     }
 
-    public String getPathTodo() {
+    String getPathTodo() {
         return pathTodo;
     }
 }

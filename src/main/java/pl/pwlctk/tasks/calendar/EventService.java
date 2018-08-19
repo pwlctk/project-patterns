@@ -11,11 +11,6 @@ class EventService {
         this.dateParser = dateParser;
     }
 
-    private String getDisplayEvent(Event event) {
-
-        return event.getName() + ": " + dateParser.toDisplayString(event.getDate());
-    }
-
     void showAllEvents() {
         repository.getAllEvents().stream().map(this::getDisplayEvent).forEach(System.out::println);
     }
@@ -24,14 +19,13 @@ class EventService {
         Optional<Event> event = repository.getNextEvent();
         String display = event.map(this::getDisplayEvent).orElse("Nie ma najbliższego wydarzenia");
         System.out.println(display);
-
     }
 
-    void addEvent() {
-        String newEventDate = "12122012 12:12";
-        String newEventName = "Nowe wydarzenie";
-        repository.save(new Event(newEventName, newEventDate));
+    void addEvent(String date, String name) {
+        repository.save(new Event(name, date));
     }
 
-
+    private String getDisplayEvent(Event event) {
+        return event.getName() + ": " + dateParser.toDisplayString(event.getDate());
+    }
 }

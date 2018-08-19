@@ -12,12 +12,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class TextRepository implements EventRepository {
+public class TxtRepository implements EventRepository {
     private PropertiesLoader loader;
     private EventParser parser;
     private LocalDateParser dateParser;
 
-    TextRepository(PropertiesLoader loader, EventParser parser, LocalDateParser dateParser) {
+    TxtRepository(PropertiesLoader loader, EventParser parser, LocalDateParser dateParser) {
         this.loader = loader;
         this.parser = parser;
         this.dateParser = dateParser;
@@ -31,8 +31,7 @@ public class TextRepository implements EventRepository {
                     .map(parser::parseToEvent)
                     .filter(Optional::isPresent)
                     .map(Optional::get);
-            return eventStream
-                    .collect(Collectors.toList());
+            return eventStream.collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
             return Collections.emptyList();
