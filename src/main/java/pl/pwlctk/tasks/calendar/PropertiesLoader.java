@@ -27,7 +27,7 @@ public class PropertiesLoader {
         }
     }
 
-    String getDateTimeInputFormatter() {
+    public String getDateTimeInputFormatter() {
         return dateTimeInputFormatter;
     }
 

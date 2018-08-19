@@ -22,11 +22,16 @@ public class LocalDateParser {
         return localDateTime.format(formatter);
     }
 
-    String toInputString(LocalDateTime localDateTime){
+    public String toInputString(LocalDateTime localDateTime){
         String inputDateFormat = propertiesLoader.getDateTimeInputFormatter();
         DateTimeFormatter formatter = DateTimeFormatter.
                 ofPattern(inputDateFormat);
         return localDateTime.format(formatter);
+    }
+
+    public String toInputString(String dateInRawString){
+        LocalDateTime localDateTime = toLocalDateTime(dateInRawString);
+        return toInputString(localDateTime);
     }
 
     public LocalDateTime toLocalDateTime(String string) {

@@ -4,7 +4,7 @@ import pl.pwlctk.tasks.calendar.repository.EventRepository;
 
 import java.util.Optional;
 
-class EventService {
+public class EventService {
     private EventRepository repository;
     private LocalDateParser dateParser;
 
@@ -13,17 +13,17 @@ class EventService {
         this.dateParser = dateParser;
     }
 
-    void showAllEvents() {
+    public void showAllEvents() {
         repository.getAllEvents().stream().map(this::getDisplayEvent).forEach(System.out::println);
     }
 
-    void showNextEvent() {
+    public void showNextEvent() {
         Optional<Event> event = repository.getNextEvent();
         String display = event.map(this::getDisplayEvent).orElse("Nie ma najbliższego wydarzenia");
         System.out.println(display);
     }
 
-    void addEvent(String date, String name) {
+    public void addEvent(String date, String name) {
         repository.save(new Event(name, date));
     }
 

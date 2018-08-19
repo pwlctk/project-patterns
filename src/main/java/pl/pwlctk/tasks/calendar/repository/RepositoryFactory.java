@@ -17,7 +17,7 @@ public class RepositoryFactory {
     }
 
     public EventRepository createRepository() {
-        boolean isXml = propertiesLoader.getPathEvent().contains(".xml");
+        boolean isXml = propertiesLoader.getPathEvent().endsWith(".xml");
         if (isXml) {
             return new XmlRepository(propertiesLoader, localDateParser);
         } else {
