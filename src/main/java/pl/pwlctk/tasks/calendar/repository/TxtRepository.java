@@ -1,4 +1,9 @@
-package pl.pwlctk.tasks.calendar;
+package pl.pwlctk.tasks.calendar.repository;
+
+import pl.pwlctk.tasks.calendar.Event;
+import pl.pwlctk.tasks.calendar.EventParser;
+import pl.pwlctk.tasks.calendar.LocalDateParser;
+import pl.pwlctk.tasks.calendar.PropertiesLoader;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class TxtRepository implements EventRepository {
+class TxtRepository implements EventRepository {
     private PropertiesLoader loader;
     private EventParser parser;
     private LocalDateParser dateParser;

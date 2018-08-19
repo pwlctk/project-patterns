@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-class PropertiesLoader {
+public class PropertiesLoader {
     private String dateTimeInputFormatter;
     private String dateTimeOutputFormatter;
     private String pathEvent;
@@ -35,7 +35,7 @@ class PropertiesLoader {
         return dateTimeOutputFormatter;
     }
 
-    String getPathEvent() {
+    public String getPathEvent() {
         return pathEvent;
     }
 

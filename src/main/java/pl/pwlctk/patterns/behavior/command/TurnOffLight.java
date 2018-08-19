@@ -3,7 +3,7 @@ package pl.pwlctk.patterns.behavior.command;
 public class TurnOffLight implements Command{
     private final Light light;
 
-    public TurnOffLight(Light light) {
+    TurnOffLight(Light light) {
         this.light = light;
     }
 

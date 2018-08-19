@@ -1,4 +1,9 @@
-package pl.pwlctk.tasks.calendar;
+package pl.pwlctk.tasks.calendar.repository;
+
+import pl.pwlctk.tasks.calendar.Calendar;
+import pl.pwlctk.tasks.calendar.Event;
+import pl.pwlctk.tasks.calendar.LocalDateParser;
+import pl.pwlctk.tasks.calendar.PropertiesLoader;
 
 import javax.xml.bind.JAXB;
 import java.io.File;
@@ -6,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-public class XmlRepository implements EventRepository {
+class XmlRepository implements EventRepository {
 
     private PropertiesLoader loader;
     private LocalDateParser dateParser;

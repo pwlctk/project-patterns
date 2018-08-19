@@ -24,7 +24,7 @@ public class Event {
         return name;
     }
 
-    String getDate() {
+    public String getDate() {
         return date;
     }
 }

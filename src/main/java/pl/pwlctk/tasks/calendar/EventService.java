@@ -1,5 +1,7 @@
 package pl.pwlctk.tasks.calendar;
 
+import pl.pwlctk.tasks.calendar.repository.EventRepository;
+
 import java.util.Optional;
 
 class EventService {

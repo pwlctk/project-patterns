@@ -3,7 +3,7 @@ package pl.pwlctk.tasks.calendar;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-class LocalDateParser {
+public class LocalDateParser {
     private final PropertiesLoader propertiesLoader;
 
     LocalDateParser(PropertiesLoader propertiesLoader) {
@@ -29,7 +29,7 @@ class LocalDateParser {
         return localDateTime.format(formatter);
     }
 
-    LocalDateTime toLocalDateTime(String string) {
+    public LocalDateTime toLocalDateTime(String string) {
         String inputDateFormat = propertiesLoader.getDateTimeInputFormatter();
         DateTimeFormatter formatter = DateTimeFormatter.
                 ofPattern(inputDateFormat);

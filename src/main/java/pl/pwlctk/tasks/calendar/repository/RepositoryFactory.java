@@ -1,18 +1,22 @@
-package pl.pwlctk.tasks.calendar;
+package pl.pwlctk.tasks.calendar.repository;
 
-class RepositoryFactory {
+import pl.pwlctk.tasks.calendar.EventParser;
+import pl.pwlctk.tasks.calendar.LocalDateParser;
+import pl.pwlctk.tasks.calendar.PropertiesLoader;
+
+public class RepositoryFactory {
 
     private PropertiesLoader propertiesLoader;
     private LocalDateParser localDateParser;
     private EventParser eventParser;
 
-    RepositoryFactory(PropertiesLoader propertiesLoader, LocalDateParser localDateParser, EventParser eventParser) {
+    public RepositoryFactory(PropertiesLoader propertiesLoader, LocalDateParser localDateParser, EventParser eventParser) {
         this.propertiesLoader = propertiesLoader;
         this.localDateParser = localDateParser;
         this.eventParser = eventParser;
     }
 
-    EventRepository createRepository() {
+    public EventRepository createRepository() {
         boolean isXml = propertiesLoader.getPathEvent().contains(".xml");
         if (isXml) {
             return new XmlRepository(propertiesLoader, localDateParser);
