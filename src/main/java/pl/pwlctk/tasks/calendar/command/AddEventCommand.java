@@ -2,45 +2,33 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
+import pl.pwlctk.tasks.calendar.Member;
+
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class AddEventCommand implements Command {
     private EventService service;
     private LocalDateParser parser;
+    private Member member;
 
-    AddEventCommand(EventService service, LocalDateParser parser) {
+    AddEventCommand(EventService service, LocalDateParser parser, Member member) {
         this.service = service;
         this.parser = parser;
+        this.member = member;
     }
 
     @Override
     public void run() {
         Scanner scanner = new Scanner(System.in);
-        String date = getProperDate(scanner);
+        String date = parser.getProperDate();
         System.out.println("Podaj nazwę wydarzenia:");
         String name = scanner.nextLine();
 
-        service.addEvent(date, name);
+        service.addEvent(date, name, member);
         System.out.println("Wydarzenie dodano pomyślnie!");
     }
 
-    private String getProperDate(Scanner scanner) {
-        String date = "";
-        boolean loop = true;
-        while (loop) {
-            System.out.println("Podaj datę i godzinę (format: " + parser.getInputDateTimeRegex() + "):");
-            String text = scanner.nextLine();
-            loop = false;
-            try {
-                date = parser.toInputString(text);
-            } catch (DateTimeParseException e) {
-                System.out.println("Zły format daty!");
-                loop = true;
-            }
-        }
-        return date;
-    }
 
     @Override
     public String getHelpMessage() {

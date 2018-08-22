@@ -6,8 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EventRepository {
-    List<Event> getAllEvents();
+    List<Event> getEventsFromDisk();
+
+    List<Event> getEvents();
+
     Optional<Event> getNextEvent();
+
     void save(Event event);
+
     void saveAllEventsToDisk();
 }

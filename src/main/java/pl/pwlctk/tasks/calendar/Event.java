@@ -26,6 +26,12 @@ public class Event {
         this.date = date;
     }
 
+    Event(String date, String name, Member member) {
+        this.memberList.add(member);
+        this.date = date;
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -36,6 +42,14 @@ public class Event {
 
     public List<Member> getMemberList() {
         return memberList;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setMemberList(List<Member> memberList) {

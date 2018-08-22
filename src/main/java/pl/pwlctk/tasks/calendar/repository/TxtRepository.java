@@ -1,9 +1,6 @@
 package pl.pwlctk.tasks.calendar.repository;
 
-import pl.pwlctk.tasks.calendar.Event;
-import pl.pwlctk.tasks.calendar.EventParser;
-import pl.pwlctk.tasks.calendar.LocalDateParser;
-import pl.pwlctk.tasks.calendar.PropertiesLoader;
+import pl.pwlctk.tasks.calendar.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,15 +18,17 @@ class TxtRepository implements EventRepository {
     private PropertiesLoader loader;
     private EventParser parser;
     private LocalDateParser dateParser;
+    private List<Event> events;
 
     TxtRepository(PropertiesLoader loader, EventParser parser, LocalDateParser dateParser) {
         this.loader = loader;
         this.parser = parser;
         this.dateParser = dateParser;
+        this.events = getEventsFromDisk();
     }
 
     @Override
-    public List<Event> getAllEvents() {
+    public List<Event> getEventsFromDisk() {
         try {
             Path path = Paths.get(loader.getPathEvent());
             Stream<Event> eventStream = Files.lines(path)
@@ -44,8 +43,13 @@ class TxtRepository implements EventRepository {
     }
 
     @Override
+    public List<Event> getEvents() {
+        return null;
+    }
+
+    @Override
     public Optional<Event> getNextEvent() {
-        List<Event> all = getAllEvents();
+        List<Event> all = getEventsFromDisk();
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime closedTimeFromNow = LocalDateTime.MAX;
         Event closest = null;
@@ -74,7 +78,7 @@ class TxtRepository implements EventRepository {
 
     @Override
     public void saveAllEventsToDisk() {
-        List<Event> allEvents = getAllEvents();
+        List<Event> allEvents = getEventsFromDisk();
         try {
             String path = loader.getPathEvent();
             StringBuilder content = new StringBuilder();

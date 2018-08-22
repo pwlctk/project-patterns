@@ -2,6 +2,8 @@ package pl.pwlctk.tasks.calendar;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
 
 public class LocalDateParser {
     private final PropertiesLoader propertiesLoader;
@@ -43,5 +45,23 @@ public class LocalDateParser {
 
     public String getInputDateTimeRegex(){
         return propertiesLoader.getDateTimeInputFormatter();
+    }
+
+    public String getProperDate() {
+        Scanner scanner = new Scanner(System.in);
+        String date = "";
+        boolean loop = true;
+        while (loop) {
+            System.out.println("Podaj datę i godzinę (format: " + getInputDateTimeRegex() + "):");
+            String text = scanner.nextLine();
+            loop = false;
+            try {
+                date = toInputString(text);
+            } catch (DateTimeParseException e) {
+                System.out.println("Zły format daty!");
+                loop = true;
+            }
+        }
+        return date;
     }
 }
