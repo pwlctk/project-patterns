@@ -9,12 +9,12 @@ import java.util.List;
 public class EventCreationEmitter {
     private List<EventCreationObserver> observators = new ArrayList<>();
 
-    public void registerObserver(EventCreationObserver printEventCreationObserver) {
-        observators.add(printEventCreationObserver);
+    public void registerObserver(EventCreationObserver observer) {
+        observators.add(observer);
     }
 
-    public void unRegisterObserver(PrintEventCreationObserver printEventCreationObserver) {
-        observators.remove(printEventCreationObserver);
+    public void unRegisterObserver(PrintEventCreationObserver observer) {
+        observators.remove(observer);
     }
 
     public void notify(Event event, Member member) {

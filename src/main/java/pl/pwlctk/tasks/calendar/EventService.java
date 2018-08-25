@@ -1,6 +1,8 @@
 package pl.pwlctk.tasks.calendar;
 
 import pl.pwlctk.tasks.calendar.emitter.EventCreationEmitter;
+import pl.pwlctk.tasks.calendar.emitter.PrintEventCreationObserver;
+import pl.pwlctk.tasks.calendar.emitter.SendEmailEventCreationObserver;
 import pl.pwlctk.tasks.calendar.repository.EventRepository;
 import pl.pwlctk.tasks.calendar.tools.EmailValidation;
 import pl.pwlctk.tasks.calendar.tools.Input;
@@ -12,12 +14,14 @@ import java.util.Optional;
 public class EventService {
     private EventRepository repository;
     private LocalDateParser dateParser;
-    private EventCreationEmitter eventCreationEmitter;
+    private EventCreationEmitter emitter;
 
-    EventService(EventRepository repository, LocalDateParser dateParser, EventCreationEmitter eventCreationEmitter) {
+    EventService(EventRepository repository, LocalDateParser dateParser) {
         this.repository = repository;
         this.dateParser = dateParser;
-        this.eventCreationEmitter = eventCreationEmitter;
+        this.emitter = new EventCreationEmitter();
+        emitter.registerObserver(new PrintEventCreationObserver());
+        emitter.registerObserver(new SendEmailEventCreationObserver());
     }
 
     public void showAllEvents() {
@@ -34,11 +38,12 @@ public class EventService {
         System.out.println(display);
     }
 
-    public void addEvent(String date, String name, Member member) {
-        Event newEvent = new Event(date, name, member);
+    public void addEvent(String date, String name, Member creator) {
+        Event newEvent = new Event(date, name);
+        newEvent.addMember(creator);
         repository.saveEvent(newEvent);
 
-        eventCreationEmitter.notify(newEvent, member);
+        emitter.notify(newEvent, creator);
     }
 
     public void removeEvent(Event event) {

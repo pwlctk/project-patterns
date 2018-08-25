@@ -32,6 +32,6 @@ public class Member {
     }
 
     public String getMember() {
-        return name + ": " + email;
+        return name + " (" + email + ")";
     }
 }

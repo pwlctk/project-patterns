@@ -2,6 +2,7 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
+import pl.pwlctk.tasks.calendar.Member;
 import pl.pwlctk.tasks.calendar.UserRegistrationService;
 import pl.pwlctk.tasks.calendar.tools.Input;
 
@@ -23,7 +24,8 @@ public class AddEvent implements Command {
         System.out.println("Podaj nazwę wydarzenia:");
         String name = Input.in.nextLine();
 
-        service.addEvent(date, name, registrationService.getLogInUser());
+        Member currentUser = registrationService.getLogInUser();
+        service.addEvent(date, name, currentUser);
 
         System.out.println("Wydarzenie dodano pomyślnie!");
     }

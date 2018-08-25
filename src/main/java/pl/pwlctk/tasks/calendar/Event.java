@@ -26,12 +26,6 @@ public class Event {
         this.date = date;
     }
 
-    Event(String date, String name, Member member) {
-        this.memberList.add(member);
-        this.date = date;
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }

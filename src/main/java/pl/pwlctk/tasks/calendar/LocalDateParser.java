@@ -1,5 +1,7 @@
 package pl.pwlctk.tasks.calendar;
 
+import pl.pwlctk.tasks.calendar.tools.Input;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -48,12 +50,11 @@ public class LocalDateParser {
     }
 
     public String getProperDate() {
-        Scanner scanner = new Scanner(System.in);
         String date = "";
         boolean loop = true;
         while (loop) {
             System.out.println("Podaj datę i godzinę (format: " + getInputDateTimeRegex() + "):");
-            String text = scanner.nextLine();
+            String text = Input.in.nextLine();
             loop = false;
             try {
                 date = toInputString(text);
