@@ -23,7 +23,7 @@ public class AddRandomEvent implements Command {
         String name = "Losowe wydarzenie";
         LocalDateTime localDateTime = RandomDateTime.createRandomDate(2015, 2020);
         String date = parser.toInputString(localDateTime);
-        service.addEvent(date, name, registrationService.getLogInUser());
+        service.addEvent(name, date, registrationService.getLogInUser());
         System.out.println("Dodano losowe wydarzenie!");
     }
 

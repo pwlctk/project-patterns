@@ -25,7 +25,7 @@ public class AddEvent implements Command {
         String name = Input.in.nextLine();
 
         Member currentUser = registrationService.getLogInUser();
-        service.addEvent(date, name, currentUser);
+        service.addEvent(name, date, currentUser);
 
         System.out.println("Wydarzenie dodano pomyślnie!");
     }

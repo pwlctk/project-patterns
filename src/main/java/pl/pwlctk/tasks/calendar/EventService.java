@@ -20,6 +20,7 @@ public class EventService {
         this.repository = repository;
         this.dateParser = dateParser;
         this.emitter = new EventCreationEmitter();
+
         emitter.registerObserver(new PrintEventCreationObserver());
         emitter.registerObserver(new SendEmailEventCreationObserver());
     }

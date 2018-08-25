@@ -6,7 +6,7 @@ import pl.pwlctk.tasks.calendar.Member;
 public class SendEmailEventCreationObserver implements EventCreationObserver {
 
     @Override
-    public void notify(Event event, Member member) {
+    public void notify(Event createdEvent, Member creator) {
         System.out.println("Wysłano maila");
     }
 }
