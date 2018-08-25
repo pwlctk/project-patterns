@@ -17,4 +17,18 @@
         <member name="all" email="all@all.pl"/>
         <member name="Marek" email="marek@gmail.com"/>
     </event>
+    <event date="25082018 11:44" name="Zajecia z Javy">
+        <member name="Paweł" email="pwlctk@gmail.com"/>
+        <member name="Piotr" email="piotr@gmail.com"/>
+    </event>
+    <event date="10101010 10:10" name="Wydarzenie z dzisiaj">
+        <member name="Paweł" email="pwlctk@gmail.com"/>
+        <member name="JAnek" email="janek@gmail.com"/>
+    </event>
+    <event date="12121212 12:12" name="Sprawdzam czy działa emitter">
+        <member name="Paweł" email="pwlctk@gmail.com"/>
+    </event>
+    <event date="08062016 01:56" name="Losowe wydarzenie">
+        <member name="Paweł" email="dsfsf@dada.pl"/>
+    </event>
 </calendar>

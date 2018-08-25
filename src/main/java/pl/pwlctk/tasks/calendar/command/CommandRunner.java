@@ -2,7 +2,7 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
-import pl.pwlctk.tasks.calendar.Member;
+import pl.pwlctk.tasks.calendar.UserRegistrationService;
 import pl.pwlctk.tasks.calendar.repository.EventRepository;
 
 import java.util.HashMap;
@@ -12,14 +12,14 @@ import java.util.Optional;
 public class CommandRunner {
     private final Map<String, Command> map = new HashMap<>();
 
-    public CommandRunner(EventService service, LocalDateParser parser, Member member, EventRepository eventRepository) {
+    public CommandRunner(EventService service, LocalDateParser parser, EventRepository eventRepository, UserRegistrationService registrationService) {
         addCommand(new Help(map));
         addCommand(new Exit());
         addCommand(new ShowAllEvents(service));
         addCommand(new NextEvent(service));
-        addCommand(new AddEvent(service, parser, member));
-        addCommand(new AddRandomEvent(service, parser, member));
-        addCommand(new SearchByEmail(service, eventRepository));
+        addCommand(new AddEvent(service, parser, registrationService));
+        addCommand(new AddRandomEvent(service, parser, registrationService));
+        addCommand(new SearchByEmail(service));
         addCommand(new DeleteEvent(service, eventRepository));
         addCommand(new EditEvent(service, eventRepository, parser));
         addCommand(new EditMembers(service, eventRepository));
@@ -28,10 +28,6 @@ public class CommandRunner {
     private void addCommand(Command command) {
         String key = command.getCommandName().trim().toUpperCase();
         map.put(key, command);
-    }
-
-    public void removeCommand(Command command) {
-        map.remove(command.getCommandName().trim().toUpperCase());
     }
 
     private Optional<Command> getCommand(String actionName) {

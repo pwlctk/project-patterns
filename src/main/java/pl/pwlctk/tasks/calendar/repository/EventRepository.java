@@ -12,11 +12,10 @@ public interface EventRepository {
 
     Optional<Event> getNextEvent();
 
-    void addEvent(Event event);
+    void saveEvent(Event event);
+
+    void removeEvent(Event event);
 
     void saveAll();
 
-    void addMember(String name, String email, Event event);
-
-    void deleteMember(int id, Event event);
 }

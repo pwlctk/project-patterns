@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Calendar {

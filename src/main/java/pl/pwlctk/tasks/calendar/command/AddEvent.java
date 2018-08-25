@@ -2,31 +2,29 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
-import pl.pwlctk.tasks.calendar.Member;
+import pl.pwlctk.tasks.calendar.UserRegistrationService;
+import pl.pwlctk.tasks.calendar.tools.Input;
 
-import java.util.Scanner;
 
 public class AddEvent implements Command {
     private EventService service;
     private LocalDateParser parser;
-    private Member member;
+    private UserRegistrationService registrationService;
 
-    AddEvent(EventService service, LocalDateParser parser, Member member) {
+    AddEvent(EventService service, LocalDateParser parser, UserRegistrationService registrationService) {
         this.service = service;
         this.parser = parser;
-        this.member = member;
+        this.registrationService = registrationService;
     }
 
     @Override
     public void run() {
-        Scanner scanner = new Scanner(System.in);
         String date = parser.getProperDate();
         System.out.println("Podaj nazwę wydarzenia:");
-        String name = scanner.nextLine();
+        String name = Input.in.nextLine();
 
-        service.addEvent(date, name, member);
+        service.addEvent(date, name, registrationService.getLogInUser());
 
-        service.save();
         System.out.println("Wydarzenie dodano pomyślnie!");
     }
 

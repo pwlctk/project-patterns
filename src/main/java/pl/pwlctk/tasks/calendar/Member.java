@@ -18,7 +18,7 @@ public class Member {
     public Member() {
     }
 
-    public Member(String name, String email) {
+    Member(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -27,7 +27,7 @@ public class Member {
         return name;
     }
 
-    public String getEmail() {
+    String getEmail() {
         return email;
     }
 

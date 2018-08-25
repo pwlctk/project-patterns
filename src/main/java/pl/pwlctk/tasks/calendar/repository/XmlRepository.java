@@ -52,9 +52,15 @@ class XmlRepository implements EventRepository {
 
 
     @Override
-    public void addEvent(Event event) {
+    public void saveEvent(Event event) {
         events.add(event);
+        saveAll();
+    }
 
+    @Override
+    public void removeEvent(Event event) {
+        events.remove(event);
+        saveAll();
     }
 
     @Override
@@ -67,14 +73,4 @@ class XmlRepository implements EventRepository {
         JAXB.marshal(calendar, xmlFile);
     }
 
-    @Override
-    public void addMember(String name, String email, Event event) {
-        event.getMemberList().add(new Member(name, email));
-
-    }
-
-    @Override
-    public void deleteMember(int id, Event event) {
-        event.getMemberList().remove(id);
-    }
 }

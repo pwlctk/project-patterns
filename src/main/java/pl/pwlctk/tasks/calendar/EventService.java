@@ -1,17 +1,23 @@
 package pl.pwlctk.tasks.calendar;
 
+import pl.pwlctk.tasks.calendar.emitter.EventCreationEmitter;
 import pl.pwlctk.tasks.calendar.repository.EventRepository;
+import pl.pwlctk.tasks.calendar.tools.EmailValidation;
+import pl.pwlctk.tasks.calendar.tools.Input;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class EventService {
     private EventRepository repository;
     private LocalDateParser dateParser;
+    private EventCreationEmitter eventCreationEmitter;
 
-    EventService(EventRepository repository, LocalDateParser dateParser) {
+    EventService(EventRepository repository, LocalDateParser dateParser, EventCreationEmitter eventCreationEmitter) {
         this.repository = repository;
         this.dateParser = dateParser;
+        this.eventCreationEmitter = eventCreationEmitter;
     }
 
     public void showAllEvents() {
@@ -28,16 +34,26 @@ public class EventService {
         System.out.println(display);
     }
 
-    public void addEvent(String date, String name, Member guest) {
-        repository.addEvent(new Event(date, name, guest));
+    public void addEvent(String date, String name, Member member) {
+        Event newEvent = new Event(date, name, member);
+        repository.saveEvent(newEvent);
+
+        eventCreationEmitter.notify(newEvent, member);
+    }
+
+    public void removeEvent(Event event) {
+        repository.removeEvent(event);
     }
 
     public void addMember(Event event) {
+        EmailValidation emailValidation = new EmailValidation();
         System.out.println("Podaj imię:");
         Input.in.nextLine();
         String name = Input.in.nextLine();
-        String email = EmailValidation.enterEmail();
-        repository.addMember(name, email, event);
+        System.out.println("Podaj email (example@example.com):");
+        String email = emailValidation.enterEmail();
+        Member member = new Member(name, email);
+        event.addMember(member);
     }
 
     public void removeMember(Event event) {
@@ -51,11 +67,11 @@ public class EventService {
             }
             System.out.println("Podaj numer gościa do usunięcia:");
             int id = Input.in.nextInt();
-            repository.deleteMember(id, event);
+            event.deleteMember(id);
         }
     }
 
-    public String getMembersList(Event event) {
+    public String getDisplayMembersList(Event event) {
         if (event.getMemberList().isEmpty()) {
             return "";
         } else {
@@ -70,15 +86,31 @@ public class EventService {
         }
     }
 
-    private String getDisplayEvent(Event event) {
-        return event.getName() + ": " + dateParser.toDisplayString(event.getDate()) + "\n" + getMembersList(event) + "\n";
+    public String getDisplayEvent(Event event) {
+        return event.getName() + ": " + dateParser.toDisplayString(event.getDate()) + "\n" + getDisplayMembersList(event) + "\n";
     }
 
-    public void showEvent(Event event) {
-        System.out.println(getDisplayEvent(event));
+    public List<Event> findEventsWithGuestByEmail(String email) {
+        List<Event> eventsList = repository.getEvents();
+        List<Event> foundEvents = new ArrayList<>();
+        for (Event event : eventsList) {
+            if (isEventContainsGuest(event, email)) {
+                foundEvents.add(event);
+            }
+        }
+        return foundEvents;
     }
 
-    public void save(){
+    private boolean isEventContainsGuest(Event event, String email) {
+        for (Member member : event.getMemberList()) {
+            if (email.equalsIgnoreCase(member.getEmail())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void save() {
         repository.saveAll();
     }
 }

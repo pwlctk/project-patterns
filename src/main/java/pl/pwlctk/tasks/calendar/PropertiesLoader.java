@@ -9,7 +9,6 @@ public class PropertiesLoader {
     private String dateTimeInputFormatter;
     private String dateTimeOutputFormatter;
     private String pathEvent;
-    private String pathTodo;
 
     PropertiesLoader() {
         File file = new File("src\\main\\resources\\calendarApp\\app.properties");
@@ -21,13 +20,12 @@ public class PropertiesLoader {
             dateTimeInputFormatter = properties.getProperty("inputDateTime");
             dateTimeOutputFormatter = properties.getProperty("outputDateTime");
             pathEvent = properties.getProperty("path.event");
-            pathTodo = properties.getProperty("path.todo");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public String getDateTimeInputFormatter() {
+    String getDateTimeInputFormatter() {
         return dateTimeInputFormatter;
     }
 
@@ -37,9 +35,5 @@ public class PropertiesLoader {
 
     public String getPathEvent() {
         return pathEvent;
-    }
-
-    String getPathTodo() {
-        return pathTodo;
     }
 }

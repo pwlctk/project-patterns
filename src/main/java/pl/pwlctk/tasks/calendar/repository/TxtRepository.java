@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class TxtRepository implements EventRepository {
+
     private PropertiesLoader loader;
     private EventParser parser;
     private LocalDateParser dateParser;
@@ -66,7 +67,7 @@ class TxtRepository implements EventRepository {
     }
 
     @Override
-    public void addEvent(Event event) {
+    public void saveEvent(Event event) {
         String path = loader.getPathEvent();
         String content = "\n" + parser.parseToLine(event);
         try {
@@ -74,6 +75,11 @@ class TxtRepository implements EventRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void removeEvent(Event event) {
+
     }
 
     @Override
@@ -89,15 +95,5 @@ class TxtRepository implements EventRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void addMember(String name, String email, Event event) {
-
-    }
-
-    @Override
-    public void deleteMember(int id, Event event) {
-
     }
 }

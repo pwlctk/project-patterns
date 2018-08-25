@@ -2,16 +2,14 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.Event;
 import pl.pwlctk.tasks.calendar.EventService;
-import pl.pwlctk.tasks.calendar.Input;
+import pl.pwlctk.tasks.calendar.tools.Input;
 import pl.pwlctk.tasks.calendar.repository.EventRepository;
-
-import java.util.Scanner;
 
 public class EditMembers implements Command {
     private EventService eventService;
     private EventRepository eventRepository;
 
-    public EditMembers(EventService eventService, EventRepository eventRepository) {
+    EditMembers(EventService eventService, EventRepository eventRepository) {
         this.eventService = eventService;
         this.eventRepository = eventRepository;
     }
@@ -20,8 +18,7 @@ public class EditMembers implements Command {
     public void run() {
         eventService.showAllEvents();
         System.out.println("Podaj numer wydarzenia do edycji: ");
-        Scanner in = new Scanner(System.in);
-        int eventId = in.nextInt();
+        int eventId = Input.in.nextInt();
 
         Event event = eventRepository.getEvents().get(--eventId);
         if (event.getMemberList().isEmpty()) {
@@ -30,7 +27,7 @@ public class EditMembers implements Command {
             eventService.addMember(event);
         } else {
             System.out.print("Wydarzenie: " + event.getName() + "\n");
-            System.out.println(eventService.getMembersList(event));
+            System.out.println(eventService.getDisplayMembersList(event));
             System.out.println("1 - Dodanie nowego gościa");
             System.out.println("2 - Usunięcie gościa");
             int choice = Input.in.nextInt();

@@ -2,45 +2,29 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.Event;
 import pl.pwlctk.tasks.calendar.EventService;
-import pl.pwlctk.tasks.calendar.Member;
-import pl.pwlctk.tasks.calendar.repository.EventRepository;
+import pl.pwlctk.tasks.calendar.tools.Input;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class SearchByEmail implements Command {
     private EventService service;
-    private EventRepository eventRepository;
 
-    SearchByEmail(EventService service, EventRepository eventRepository) {
+    SearchByEmail(EventService service) {
         this.service = service;
-        this.eventRepository = eventRepository;
     }
-
 
     @Override
     public void run() {
-        System.out.print("Podaj email gościa: ");
-        Scanner scanner = new Scanner(System.in);
-        String email = scanner.nextLine();
-        List<Event> eventsList = eventRepository.getEventsFromDisk();
-        boolean isFound = false;
-        System.out.println("Lista wydarzeń, w którym bierze udział: " + email);
-        for (Event event : eventsList) {
-            if (!event.getMemberList().isEmpty()) {
-                for (Member member : event.getMemberList()) {
-                    if (member.getEmail().equalsIgnoreCase(email)) {
-                        service.showEvent(event);
-                        isFound = true;
-                    }
-                }
+        System.out.println("Podaj email:");
+        String email = Input.in.nextLine();
+        List<Event> foundEvents = service.findEventsWithGuestByEmail(email);
+        if (foundEvents.isEmpty()) {
+            System.out.println("Nie znaleziono wydarzeń!");
+        } else {
+            for (Event event : foundEvents) {
+                System.out.println(service.getDisplayEvent(event));
             }
         }
-        if (!isFound) {
-            System.out.println("Nie znaleziono żadnych wydarzeń!");
-        }
-
-
     }
 
     @Override

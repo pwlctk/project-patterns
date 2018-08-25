@@ -1,4 +1,4 @@
-package pl.pwlctk.tasks.calendar;
+package pl.pwlctk.tasks.calendar.tools;
 
 import java.util.Scanner;
 

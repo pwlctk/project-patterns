@@ -1,22 +1,25 @@
-package pl.pwlctk.tasks.calendar;
+package pl.pwlctk.tasks.calendar.tools;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EmailValidation {
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
-    public static boolean validate(String emailStr) {
+    private boolean validate(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
         return matcher.find();
     }
 
-    public static String enterEmail() {
+    public String enterEmail() {
         String email;
         do {
-            System.out.println("Podaj email (example@example.com):");
             email = Input.in.nextLine();
+            if(!validate(email)){
+                System.out.println("Podano niepoprawny email!");
+                System.out.println("Podaj email (example@example.com):");
+            }
         } while (!validate(email));
 
         return email;

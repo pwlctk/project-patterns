@@ -17,7 +17,7 @@ public class LocalDateParser {
         return toDisplayString(localDateTime);
     }
 
-    public String toDisplayString(LocalDateTime localDateTime) {
+    private String toDisplayString(LocalDateTime localDateTime) {
         String outputDateFormat = propertiesLoader.getDateTimeOutputFormatter();
         DateTimeFormatter formatter = DateTimeFormatter.
                 ofPattern(outputDateFormat);
@@ -31,7 +31,7 @@ public class LocalDateParser {
         return localDateTime.format(formatter);
     }
 
-    public String toInputString(String dateInRawString){
+    private String toInputString(String dateInRawString){
         LocalDateTime localDateTime = toLocalDateTime(dateInRawString);
         return toInputString(localDateTime);
     }
@@ -43,7 +43,7 @@ public class LocalDateParser {
         return LocalDateTime.parse(string, formatter);
     }
 
-    public String getInputDateTimeRegex(){
+    private String getInputDateTimeRegex(){
         return propertiesLoader.getDateTimeInputFormatter();
     }
 

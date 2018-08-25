@@ -4,8 +4,8 @@ import pl.pwlctk.tasks.calendar.Event;
 import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
 import pl.pwlctk.tasks.calendar.repository.EventRepository;
+import pl.pwlctk.tasks.calendar.tools.Input;
 
-import java.util.Scanner;
 
 public class EditEvent implements Command {
     private EventService eventService;
@@ -22,16 +22,15 @@ public class EditEvent implements Command {
     public void run() {
         eventService.showAllEvents();
         System.out.println("Podaj numer wydarzenia do edycji: ");
-        Scanner in = new Scanner(System.in);
-        int eventId = in.nextInt();
-        Event event = eventRepository.getEvents().get(--eventId);
+        int eventId = Input.in.nextInt();
+        Event eventToEdit = eventRepository.getEvents().get(--eventId);
 
-        in.nextLine();
+        Input.in.nextLine();
         System.out.println("Podaj nazwę: ");
-        String name = in.nextLine();
+        String name = Input.in.nextLine();
         String date = localDateParser.getProperDate();
-        event.setDate(date);
-        event.setName(name);
+        eventToEdit.setDate(date);
+        eventToEdit.setName(name);
 
         eventService.save();
         System.out.println("Zmieniono!");

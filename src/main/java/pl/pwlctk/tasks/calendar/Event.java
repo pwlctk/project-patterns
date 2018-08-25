@@ -44,10 +44,12 @@ public class Event {
         return memberList;
     }
 
-    public void showMembers(){
-        for (Member member : memberList) {
-            System.out.print(member.getMember());
-        }
+    void addMember(Member member){
+        this.memberList.add(member);
+    }
+
+    void deleteMember(int id) {
+        memberList.remove(id);
     }
 
     public void setDate(String date) {
@@ -58,7 +60,4 @@ public class Event {
         this.name = name;
     }
 
-    public void setMemberList(List<Member> memberList) {
-        this.memberList = memberList;
-    }
 }
