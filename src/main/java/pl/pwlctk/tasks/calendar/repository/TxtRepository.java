@@ -66,7 +66,7 @@ class TxtRepository implements EventRepository {
     }
 
     @Override
-    public void save(Event event) {
+    public void addEvent(Event event) {
         String path = loader.getPathEvent();
         String content = "\n" + parser.parseToLine(event);
         try {
@@ -77,7 +77,7 @@ class TxtRepository implements EventRepository {
     }
 
     @Override
-    public void saveAllEventsToDisk() {
+    public void saveAll() {
         List<Event> allEvents = getEventsFromDisk();
         try {
             String path = loader.getPathEvent();
@@ -89,5 +89,15 @@ class TxtRepository implements EventRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void addMember(String name, String email, Event event) {
+
+    }
+
+    @Override
+    public void deleteMember(int id, Event event) {
+
     }
 }

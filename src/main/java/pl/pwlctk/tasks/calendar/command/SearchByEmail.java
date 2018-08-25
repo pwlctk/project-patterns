@@ -8,11 +8,11 @@ import pl.pwlctk.tasks.calendar.repository.EventRepository;
 import java.util.List;
 import java.util.Scanner;
 
-public class SearchByEmailCommand implements Command {
+public class SearchByEmail implements Command {
     private EventService service;
     private EventRepository eventRepository;
 
-    SearchByEmailCommand(EventService service, EventRepository eventRepository) {
+    SearchByEmail(EventService service, EventRepository eventRepository) {
         this.service = service;
         this.eventRepository = eventRepository;
     }
@@ -53,3 +53,4 @@ public class SearchByEmailCommand implements Command {
         return "search";
     }
 }
+

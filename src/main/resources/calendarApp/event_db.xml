@@ -1,33 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <calendar>
-    <event date="03032017 23:13" name="Losowe wydarzenie">
+    <event date="09092009 09:09" name="Losowe losowe">
         <member name="Paweł" email="pwlctk@gmail.com"/>
         <member name="Piotr" email="piotr@gmail.com"/>
     </event>
-    <event date="08072017 02:45" name="Losowe wydarzenie"/>
-    <event date="11012018 16:29" name="Losowe wydarzenie"/>
-    <event date="22112016 04:24" name="Losowe wydarzenie">
-        <member name="Janek" email="kosmopetarda@huligan.pl"/>
+    <event date="10101010 10:10" name="bbbbbbbbbbbb">
+        <member name="dfsfsd" email="fsfsdf@dada.pl"/>
     </event>
-    <event date="03072017 16:20" name="Losowe wydarzenie">
-        <member name="Janek" email="kosmopetarda@huligan.pl"/>
+    <event date="10101010 10:10" name="dsfsdfsdfsd">
+        <member name="dasfs" email="fsdfsd@da.pl"/>
     </event>
-    <event date="20122020 10:00" name="Rozwałka">
-        <member name="Janek" email="kosmopetarda@huligan.pl"/>
+    <event date="25032019 04:26" name="Losowe wydarzenie">
+        <member name="all" email="all@all.pl"/>
     </event>
-    <event date="04092018 14:41" name="Losowe wydarzenie">
-        <member name="Paweł" email="pwlctk@gmail.com"/>
-    </event>
-    <event date="01010001 00:01" name="Początek!">
-        <member name="Paweł" email="pwlctk@gmail.com"/>
-    </event>
-    <event date="10101010 10:10" name="Nowa super nazwa">
-        <member name="aa" email="aaa@aa.aa"/>
-    </event>
-    <event date="20122020 09:43" name="10 indeks">
-        <member name="Alfred" email="alfred@ds.pl"/>
-    </event>
-    <event date="20122018 13:30" name="Hurra">
-        <member name="dsf" email="fsdf"/>
+    <event date="10101010 10:20" name="Beeeeeeeee beeeeeeeeee">
+        <member name="all" email="all@all.pl"/>
+        <member name="Marek" email="marek@gmail.com"/>
     </event>
 </calendar>

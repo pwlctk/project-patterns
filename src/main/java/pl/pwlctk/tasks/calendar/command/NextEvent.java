@@ -2,10 +2,10 @@ package pl.pwlctk.tasks.calendar.command;
 
 import pl.pwlctk.tasks.calendar.EventService;
 
-public class NextEventCommand implements Command {
+public class NextEvent implements Command {
     private EventService service;
 
-    NextEventCommand(EventService service) {
+    NextEvent(EventService service) {
         this.service = service;
     }
 

@@ -1,16 +1,9 @@
 package pl.pwlctk.tasks.calendar.repository;
 
-import pl.pwlctk.tasks.calendar.Calendar;
-import pl.pwlctk.tasks.calendar.Event;
-import pl.pwlctk.tasks.calendar.LocalDateParser;
-import pl.pwlctk.tasks.calendar.PropertiesLoader;
+import pl.pwlctk.tasks.calendar.*;
 
 import javax.xml.bind.JAXB;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -57,29 +50,31 @@ class XmlRepository implements EventRepository {
         return Optional.ofNullable(closest);
     }
 
+
     @Override
-    public void save(Event event) {
-        File xmlFile = new File(loader.getPathEvent());
-        Calendar calendar = JAXB.unmarshal(xmlFile, Calendar.class);
+    public void addEvent(Event event) {
+        events.add(event);
 
-        List<Event> allEvents = getEvents();
-        allEvents.add(event);
+    }
 
+    @Override
+    public void saveAll() {
+        String path = loader.getPathEvent();
+        File xmlFile = new File(path);
+
+        Calendar calendar = new Calendar();
+        calendar.setEventList(getEvents());
         JAXB.marshal(calendar, xmlFile);
     }
 
     @Override
-    public void saveAllEventsToDisk() {
-        String path = loader.getPathEvent();
-        File xmlFile = new File(path);
-        try {
-            Files.write(Paths.get(path),"".getBytes(), StandardOpenOption.CREATE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void addMember(String name, String email, Event event) {
+        event.getMemberList().add(new Member(name, email));
 
-        Calendar calendar = JAXB.unmarshal(xmlFile, Calendar.class);
-        calendar.setEventList(getEvents());
-        JAXB.marshal(calendar, xmlFile);
+    }
+
+    @Override
+    public void deleteMember(int id, Event event) {
+        event.getMemberList().remove(id);
     }
 }

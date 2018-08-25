@@ -5,15 +5,14 @@ import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
 import pl.pwlctk.tasks.calendar.repository.EventRepository;
 
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class EditEventCommand implements Command {
+public class EditEvent implements Command {
     private EventService eventService;
     private EventRepository eventRepository;
     private LocalDateParser localDateParser;
 
-    EditEventCommand(EventService eventService, EventRepository eventRepository, LocalDateParser localDateParser) {
+    EditEvent(EventService eventService, EventRepository eventRepository, LocalDateParser localDateParser) {
         this.eventService = eventService;
         this.eventRepository = eventRepository;
         this.localDateParser = localDateParser;
@@ -22,19 +21,19 @@ public class EditEventCommand implements Command {
     @Override
     public void run() {
         eventService.showAllEvents();
-        System.out.print("Podaj numer wydarzenia do edycji: ");
+        System.out.println("Podaj numer wydarzenia do edycji: ");
         Scanner in = new Scanner(System.in);
-        int id = in.nextInt();
-        String date = localDateParser.getProperDate();
-        Event event = eventRepository.getEvents().get(--id);
+        int eventId = in.nextInt();
+        Event event = eventRepository.getEvents().get(--eventId);
 
         in.nextLine();
         System.out.println("Podaj nazwę: ");
         String name = in.nextLine();
+        String date = localDateParser.getProperDate();
         event.setDate(date);
         event.setName(name);
 
-        eventRepository.saveAllEventsToDisk();
+        eventService.save();
         System.out.println("Zmieniono!");
     }
 

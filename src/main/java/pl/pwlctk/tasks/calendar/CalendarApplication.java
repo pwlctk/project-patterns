@@ -10,13 +10,14 @@ public class CalendarApplication {
     public static void main(String[] args) {
         System.out.println("Super KALENDARZ");
         Scanner scanner = new Scanner(System.in);
-        String command;
-        String name;
-        String email;
+
         System.out.print("Podaj imię: ");
-        name = scanner.nextLine();
-        System.out.print("Podaj email: ");
-        email = scanner.nextLine();
+        String name = scanner.nextLine();
+        String email;
+
+        email = EmailValidation.enterEmail();
+
+
         Member member = new Member(name, email);
 
         PropertiesLoader propertiesLoader = new PropertiesLoader();
@@ -28,6 +29,7 @@ public class CalendarApplication {
         EventService service = new EventService(repository, localDateParser);
         CommandRunner commandRunner = new CommandRunner(service, localDateParser, member, repository);
 
+        String command;
         System.out.println("Jesteś zalogowany jako: " + name + " (" + email + ")");
         do {
             System.out.println("Podaj komendę: ");

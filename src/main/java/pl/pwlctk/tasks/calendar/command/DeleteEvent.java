@@ -5,11 +5,11 @@ import pl.pwlctk.tasks.calendar.repository.EventRepository;
 
 import java.util.Scanner;
 
-public class DeleteEventCommand implements Command {
+public class DeleteEvent implements Command {
     private EventService eventService;
     private EventRepository eventRepository;
 
-    DeleteEventCommand(EventService eventService, EventRepository eventRepository) {
+    DeleteEvent(EventService eventService, EventRepository eventRepository) {
         this.eventService = eventService;
         this.eventRepository = eventRepository;
     }
@@ -22,7 +22,7 @@ public class DeleteEventCommand implements Command {
         int id = scanner.nextInt();
 
         eventRepository.getEvents().remove(--id);
-        eventRepository.saveAllEventsToDisk();
+        eventService.save();
         System.out.println("Usunięto!");
 
     }

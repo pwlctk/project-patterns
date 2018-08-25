@@ -1,6 +1,6 @@
 package pl.pwlctk.tasks.calendar.command;
 
-public class ExitCommand implements Command {
+public class Exit implements Command {
     @Override
     public void run() {
         System.out.println("Koniec programu!");

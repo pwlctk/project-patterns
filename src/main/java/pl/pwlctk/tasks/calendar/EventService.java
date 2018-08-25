@@ -29,16 +29,39 @@ public class EventService {
     }
 
     public void addEvent(String date, String name, Member guest) {
-        repository.save(new Event(date, name, guest));
+        repository.addEvent(new Event(date, name, guest));
     }
 
-    private String getMembersList(Event event) {
+    public void addMember(Event event) {
+        System.out.println("Podaj imię:");
+        Input.in.nextLine();
+        String name = Input.in.nextLine();
+        String email = EmailValidation.enterEmail();
+        repository.addMember(name, email, event);
+    }
+
+    public void removeMember(Event event) {
+        if (event.getMemberList().isEmpty()) {
+            System.out.println("Lista gości jest pusta");
+        } else {
+            List<Member> memberList = event.getMemberList();
+            for (int i = 0; i < memberList.size(); i++) {
+                Member mem = memberList.get(i);
+                System.out.println(i + ": " + mem.getMember());
+            }
+            System.out.println("Podaj numer gościa do usunięcia:");
+            int id = Input.in.nextInt();
+            repository.deleteMember(id, event);
+        }
+    }
+
+    public String getMembersList(Event event) {
         if (event.getMemberList().isEmpty()) {
             return "";
         } else {
             StringBuilder members = new StringBuilder();
-            members.append("\nGoście: ");
-            event.getMemberList().forEach(m -> members.append(m.getName()).append(": ").append(m.getEmail()).append(", "));
+            members.append("Goście: ");
+            event.getMemberList().forEach(m -> members.append(m.getName()).append("(").append(m.getEmail()).append("), "));
 
             members.deleteCharAt(members.length() - 1);
             members.deleteCharAt(members.length() - 1);
@@ -48,10 +71,14 @@ public class EventService {
     }
 
     private String getDisplayEvent(Event event) {
-        return event.getName() + ": " + dateParser.toDisplayString(event.getDate()) + getMembersList(event) + "\n";
+        return event.getName() + ": " + dateParser.toDisplayString(event.getDate()) + "\n" + getMembersList(event) + "\n";
     }
 
     public void showEvent(Event event) {
         System.out.println(getDisplayEvent(event));
+    }
+
+    public void save(){
+        repository.saveAll();
     }
 }

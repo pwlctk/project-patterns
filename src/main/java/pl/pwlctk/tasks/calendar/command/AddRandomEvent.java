@@ -7,12 +7,12 @@ import pl.pwlctk.tasks.calendar.RandomDateTime;
 
 import java.time.LocalDateTime;
 
-public class AddRandomEventCommand implements Command {
+public class AddRandomEvent implements Command {
     private EventService service;
     private LocalDateParser parser;
     private Member member;
 
-    AddRandomEventCommand(EventService eventService, LocalDateParser parser, Member member) {
+    AddRandomEvent(EventService eventService, LocalDateParser parser, Member member) {
         this.service = eventService;
         this.parser = parser;
         this.member = member;
@@ -24,6 +24,7 @@ public class AddRandomEventCommand implements Command {
         LocalDateTime localDateTime = RandomDateTime.createRandomDate(2015, 2020);
         String date = parser.toInputString(localDateTime);
         service.addEvent(date, name, member);
+        service.save();
         System.out.println("Dodano losowe wydarzenie!");
     }
 

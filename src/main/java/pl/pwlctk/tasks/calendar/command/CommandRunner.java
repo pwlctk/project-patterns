@@ -13,15 +13,16 @@ public class CommandRunner {
     private final Map<String, Command> map = new HashMap<>();
 
     public CommandRunner(EventService service, LocalDateParser parser, Member member, EventRepository eventRepository) {
-        addCommand(new HelpCommand(map));
-        addCommand(new ExitCommand());
-        addCommand(new ShowAllEventsCommand(service));
-        addCommand(new NextEventCommand(service));
-        addCommand(new AddEventCommand(service, parser, member));
-        addCommand(new AddRandomEventCommand(service, parser, member));
-        addCommand(new SearchByEmailCommand(service, eventRepository));
-        addCommand(new DeleteEventCommand(service, eventRepository));
-        addCommand(new EditEventCommand(service, eventRepository, parser));
+        addCommand(new Help(map));
+        addCommand(new Exit());
+        addCommand(new ShowAllEvents(service));
+        addCommand(new NextEvent(service));
+        addCommand(new AddEvent(service, parser, member));
+        addCommand(new AddRandomEvent(service, parser, member));
+        addCommand(new SearchByEmail(service, eventRepository));
+        addCommand(new DeleteEvent(service, eventRepository));
+        addCommand(new EditEvent(service, eventRepository, parser));
+        addCommand(new EditMembers(service, eventRepository));
     }
 
     private void addCommand(Command command) {

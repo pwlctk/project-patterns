@@ -4,15 +4,14 @@ import pl.pwlctk.tasks.calendar.EventService;
 import pl.pwlctk.tasks.calendar.LocalDateParser;
 import pl.pwlctk.tasks.calendar.Member;
 
-import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class AddEventCommand implements Command {
+public class AddEvent implements Command {
     private EventService service;
     private LocalDateParser parser;
     private Member member;
 
-    AddEventCommand(EventService service, LocalDateParser parser, Member member) {
+    AddEvent(EventService service, LocalDateParser parser, Member member) {
         this.service = service;
         this.parser = parser;
         this.member = member;
@@ -26,6 +25,8 @@ public class AddEventCommand implements Command {
         String name = scanner.nextLine();
 
         service.addEvent(date, name, member);
+
+        service.save();
         System.out.println("Wydarzenie dodano pomyślnie!");
     }
 

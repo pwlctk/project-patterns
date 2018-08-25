@@ -44,6 +44,12 @@ public class Event {
         return memberList;
     }
 
+    public void showMembers(){
+        for (Member member : memberList) {
+            System.out.print(member.getMember());
+        }
+    }
+
     public void setDate(String date) {
         this.date = date;
     }

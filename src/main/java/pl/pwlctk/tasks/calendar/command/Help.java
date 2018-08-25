@@ -2,10 +2,10 @@ package pl.pwlctk.tasks.calendar.command;
 
 import java.util.Map;
 
-public class HelpCommand implements Command {
+public class Help implements Command {
     private Map<String, Command> commands;
 
-    HelpCommand(Map<String, Command> commands) {
+    Help(Map<String, Command> commands) {
         this.commands = commands;
     }
 
@@ -19,7 +19,7 @@ public class HelpCommand implements Command {
         //Pierwszy sposób
 //        for (Map.Entry<String, Command> entry : commands.entrySet()) {
 //            Command command = entry.getValue();
-//            System.out.println(command.getCommandName() + " - " + command.getHelpMessage());
+//            System.out.println(command.getMenuName() + " - " + command.getHelpMessage());
 //        }
         //Drugi sposób
 //        commands.values().forEach(value -> System.out.println(value.getHelpLine()));
